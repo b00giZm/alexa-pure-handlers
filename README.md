@@ -1,5 +1,7 @@
 # alexa-pure-handlers
 
+![](https://api.travis-ci.org/b00giZm/alexa-pure-handlers.svg?branch=master)
+
 🌟🦄 Write pure handlers for the official [Node.js Alexa Skills Kit SDK](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs). 🦄🌟
 
 One little flaw I found with the Alexa Skills Kit SDK for Node.js is, that it does encourage you to write handlers that are bound to an specific context and are therefore full of [side effects](https://en.wikipedia.org/wiki/Side_effect_(computer_science)). Side effects are bad, because they make your handlers less predictable and are much harder to test than [pure, functional](https://en.wikipedia.org/wiki/Pure_function) handlers.
@@ -11,6 +13,8 @@ Pure handlers are a good thing, because every dependency is provided explicitely
 ```bash
 npm install --save alexa-pure-handlers
 ```
+
+If you're hosting your skill on [AWS Lambda](https://aws.amazon.com/en/lambda/details/), please make sure to set your runtime to **Node.js 6.10**.
 
 ## Usage
 
