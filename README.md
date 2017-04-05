@@ -1,6 +1,6 @@
 # alexa-pure-handlers
 
-![](https://api.travis-ci.org/b00giZm/alexa-pure-handlers.svg?branch=master)
+[![](https://api.travis-ci.org/b00giZm/alexa-pure-handlers.svg?branch=master)](https://travis-ci.org/b00giZm/alexa-pure-handlers)
 
 🌟🦄 Write pure handlers for the official [Node.js Alexa Skills Kit SDK](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs). 🦄🌟
 
