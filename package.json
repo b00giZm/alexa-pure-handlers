@@ -1,0 +1,35 @@
+{
+  "name": "alexa-pure-handlers",
+  "version": "1.0.0",
+  "description": "Write pure handlers for the official Node.js Alexa Skills Kit SDK",
+  "license": "MIT",
+  "repository": "b00gizm/alexa-pure-handlers",
+  "author": {
+    "name": "Pascal Cremer",
+    "email": "b00gizm@gmail.com",
+    "url": "codenugget.co"
+  },
+  "engines": {
+    "node": ">=6.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "alexa",
+    "amazon",
+    "sdk",
+    "pure",
+    "functional"
+  ],
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "sinon": "^2.1.0",
+    "tap": "^10.3.1",
+    "tape": "^4.6.3"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/tape test.js",
+    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/tape test.js"
+  }
+}
