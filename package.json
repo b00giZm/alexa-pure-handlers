@@ -1,6 +1,6 @@
 {
   "name": "alexa-pure-handlers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Write pure handlers for the official Node.js Alexa Skills Kit SDK",
   "license": "MIT",
   "repository": "b00gizm/alexa-pure-handlers",
