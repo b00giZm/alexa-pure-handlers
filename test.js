@@ -83,3 +83,20 @@ test('it should call emit when present in return value', assert => {
 
   assert.end();
 });
+
+test('it should work with promises', assert => {
+  const handlerFunc = () => Promise.resolve({
+    emit: [':tell', 'Hello World']
+  });
+
+  const obj = {
+    emit: sinon.spy(),
+    handler: pureHandler(handlerFunc)
+  };
+
+  obj.handler().then(() => {
+    assert.true(obj.emit.calledWith(':tell', 'Hello World'));
+
+    assert.end();
+  });
+});

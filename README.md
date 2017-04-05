@@ -52,6 +52,31 @@ const handlers = {
 };
 ```
 
+## Promises Support
+
+Want to use [Promises/A+](https://promisesaplus.com/) with your pure handlers? We got you covered there, too!
+
+```javascript
+const myPromiseIntentHandler = ({ attributes, t }) => {
+  return fetch('http://api.example.org/unicorns')
+    .then(res => {
+      attributes.unicorns = res.json();
+      
+      return {
+        attributes,
+        emit: [':tell', t('OMG_UNICORNS')]
+      };
+    })
+    .catch(err => {
+      return {
+        emit: [':tell', t('THE_INTERWEBS_EXPLODED')]
+      };
+    })
+  ;
+};
+```
+
+
 ## Maintainer
 
 Pascal Cremer

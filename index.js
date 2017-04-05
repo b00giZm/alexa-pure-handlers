@@ -14,12 +14,17 @@ module.exports = function pureHandler(handlerFunc) {
 
     const result = handlerFunc(ctx);
 
-    if (result) {
+    const processor = (result = {}) => {
       self.attributes = Object.assign({}, self.attributes, result.attributes);
+      if (result.emit) {
+        self.emit(...result.emit);
+      }
+    };
+
+    if (result && 'function' === typeof result.then) {
+      return result.then(processor);
     }
 
-    if (result && result.emit) {
-      self.emit(...result.emit);
-    }
+    processor(result);
   };
 };
