@@ -1,8 +1,52 @@
 # alexa-pure-handlers
 
-🦄🦄🦄 Write pure handlers for the official [Node.js Alexa Skills Kit SDK](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs). 🦄🦄🦄
+🌟🦄 Write pure handlers for the official [Node.js Alexa Skills Kit SDK](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs). 🦄🌟
 
-(More info soon...)
+One little flaw I found with the Alexa Skills Kit SDK for Node.js is, that it does encourage you to write handlers that are bound to an specific context and are therefore full of [side effects](https://en.wikipedia.org/wiki/Side_effect_(computer_science)). Side effects are bad, because they make your handlers less predictable and are much harder to test than [pure, functional](https://en.wikipedia.org/wiki/Pure_function) handlers.
+
+Pure handlers are a good thing, because every dependency is provided explicitely through their arguments, and they can have a determined return value, which makes testing a breeze.
+
+## Install
+
+```bash
+npm install --save alexa-pure-handlers
+```
+
+## Usage
+
+Step 1: Write your pure intent handlers
+
+```javascript
+// inside handlers.js
+const myIntentHandler = ({ attributes, t }) => {
+
+  attributes.foo = 123;
+  const emit = [':tell', t('MY_LOCALIZED_MESSAGE')]
+
+  return { attributes, emit };
+}
+
+module.exports = { myIntentHandler };
+```
+
+Step 2: Wrap your handlers with `pure`
+
+```javascript
+const Alexa = require('alexa-sdk');
+const pure = require('alexa-pure-handlers');
+const { myIntentHandler } = require('./handlers');
+
+exports.handler = (event, context, callback) => {
+    const alexa = Alexa.handler(event, context);
+
+    alexa.registerHandlers(handlers);
+    alexa.execute();
+};
+
+const handlers = {
+  'MyIntent': pure(myIntentHandler) // This is where the 🌟🦄 happens
+};
+```
 
 ## Maintainer
 
